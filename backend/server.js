@@ -5,33 +5,37 @@ require("dotenv").config();
 
 const app = express();
 
-// 🔥 Middleware
-app.use(cors());
+// ✅ FINAL CORS FIX
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://food-order-8qe3.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
+// ✅ BODY PARSER
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// 🔥 Routes
-const userRoutes = require("./routes/userRoutes");
-const restaurantRoutes = require("./routes/restaurantRoutes");
-const foodRoutes = require("./routes/foodRoutes");
-const orderRoutes = require("./routes/orderRoutes");
+// ✅ ROUTES
+app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/restaurants", require("./routes/restaurantRoutes"));
+app.use("/api/foods", require("./routes/foodRoutes"));
+app.use("/api/orders", require("./routes/orderRoutes"));
 
-app.use("/api/users", userRoutes);
-app.use("/api/restaurants", restaurantRoutes);
-app.use("/api/foods", foodRoutes);
-app.use("/api/orders", orderRoutes);
-
-// 🔥 Test route
+// ✅ TEST ROUTE
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-// 🔥 MongoDB Connection
-mongoose
-  .connect(process.env.MONGO_URI)
+// ✅ DB CONNECT
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.log(err));
+  .catch(err => console.log(err));
 
-// 🔥 Port
+// ✅ PORT
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
