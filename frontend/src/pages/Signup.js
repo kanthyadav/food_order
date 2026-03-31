@@ -11,12 +11,17 @@ function Signup() {
 
   const handleSignup = async () => {
     try {
-      await axios.post(
+      const res = await axios.post(
         "https://food-order-eyxp.onrender.com/api/users/register",
         {
           name,
           email,
           password
+        },
+        {
+          headers: {
+            "Content-Type": "application/json"
+          }
         }
       );
 
@@ -24,6 +29,7 @@ function Signup() {
       navigate("/");
 
     } catch (error) {
+      console.log(error.response?.data || error.message);
       alert("Signup Failed ❌");
     }
   };
