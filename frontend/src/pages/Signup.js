@@ -11,16 +11,20 @@ function Signup() {
 
   const handleSignup = async () => {
     try {
-      await axios.post("http://localhost:5000/api/users/signup", {
-        name,
-        email,
-        password
-      });
+      const res = await axios.post(
+        "https://food-order-eyxp.onrender.com/api/users/register",
+        {
+          name,
+          email,
+          password
+        }
+      );
 
       alert("Signup Successful ✅");
       navigate("/");
 
     } catch (error) {
+      console.log(error);
       alert("Signup Failed ❌");
     }
   };
