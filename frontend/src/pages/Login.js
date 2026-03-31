@@ -10,14 +10,16 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post("http://localhost:5000/api/users/login", {
-        email,
-        password
-      });
+      const res = await axios.post(
+        "https://food-order-eyxp.onrender.com/api/users/login",
+        {
+          email,
+          password
+        }
+      );
 
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userId", res.data.user.id);
-      localStorage.setItem("isAdmin", res.data.user.isAdmin);
 
       alert("Login Successful ✅");
       navigate("/home");
