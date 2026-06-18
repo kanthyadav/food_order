@@ -12,7 +12,7 @@ function Signup() {
   const handleSignup = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/users/register",
+        "https://food-order-eyxp.onrender.com/api/users/register",
         {
           name,
           email,

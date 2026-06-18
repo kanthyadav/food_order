@@ -18,7 +18,7 @@ function ApplyRestaurant() {
       );
 
       await axios.post(
-        "http://localhost:5000/api/restaurant-requests/apply-restaurant",
+        "https://food-order-eyxp.onrender.com/api/restaurant-requests/apply-restaurant",
         {
           user: user.id,
           restaurantName,

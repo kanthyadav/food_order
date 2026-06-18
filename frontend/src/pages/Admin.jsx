@@ -17,7 +17,7 @@ function Admin() {
         localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/admin/dashboard",
+        "https://food-order-eyxp.onrender.com/api/admin/dashboard",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -38,7 +38,7 @@ function Admin() {
         localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/admin/restaurant-requests",
+        "https://food-order-eyxp.onrender.com/api/admin/restaurant-requests",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -59,7 +59,7 @@ function Admin() {
         localStorage.getItem("token");
 
       await axios.put(
-        `http://localhost:5000/api/admin/approve/${id}`,
+        `https://food-order-eyxp.onrender.com/api/admin/approve/${id}`,
         {},
         {
           headers: {
@@ -85,7 +85,7 @@ function Admin() {
         localStorage.getItem("token");
 
       await axios.put(
-        `http://localhost:5000/api/admin/reject/${id}`,
+        `https://food-order-eyxp.onrender.com/api/admin/reject/${id}`,
         {},
         {
           headers: {
@@ -110,7 +110,7 @@ function Admin() {
         localStorage.getItem("token");
 
       const res = await axios.post(
-        "http://localhost:5000/api/ai/generate-restaurants",
+        "https://food-order-eyxp.onrender.com/api/ai/generate-restaurants",
         {
           city,
           count: 10

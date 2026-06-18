@@ -28,7 +28,7 @@ function RestaurantDashboard() {
         localStorage.getItem("token");
 
       const res = await axios.get(
-        `http://localhost:5000/api/orders/restaurant/${restaurantId}`,
+        `https://food-order-eyxp.onrender.com/api/orders/restaurant/${restaurantId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -47,7 +47,7 @@ function RestaurantDashboard() {
     try {
 
       const res = await axios.get(
-        `http://localhost:5000/api/foods/restaurant/${restaurantId}`
+        `https://food-order-eyxp.onrender.com/api/foods/restaurant/${restaurantId}`
       );
 
       setFoods(res.data);
@@ -61,7 +61,7 @@ function RestaurantDashboard() {
     try {
 
       await axios.post(
-        "http://localhost:5000/api/foods/add",
+        "https://food-order-eyxp.onrender.com/api/foods/add",
         {
           name: foodData.name,
           price: Number(
@@ -105,7 +105,7 @@ function RestaurantDashboard() {
     try {
 
       await axios.delete(
-        `http://localhost:5000/api/foods/${id}`
+        `https://food-order-eyxp.onrender.com/api/foods/${id}`
       );
 
       alert("Food Deleted ✅");
@@ -127,7 +127,7 @@ function RestaurantDashboard() {
         localStorage.getItem("token");
 
       await axios.put(
-        `http://localhost:5000/api/orders/status/${orderId}`,
+        `https://food-order-eyxp.onrender.com/api/orders/status/${orderId}`,
         {
           status,
           statusMessage:

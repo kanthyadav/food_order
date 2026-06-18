@@ -10,7 +10,7 @@ function AIAssistant() {
       const token = localStorage.getItem("token");
 
       const res = await axios.post(
-        "http://localhost:5000/api/ai/food-assistant",
+        "https://food-order-eyxp.onrender.com/api/ai/food-assistant",
         {
           query
         },

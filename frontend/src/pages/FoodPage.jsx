@@ -21,7 +21,7 @@ function FoodPage() {
   const fetchFoods = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/foods"
+        "https://food-order-eyxp.onrender.com/api/foods"
       );
 
       const restaurantFoods = res.data.filter(
@@ -81,7 +81,7 @@ function FoodPage() {
       );
 
       await axios.post(
-        "http://localhost:5000/api/orders/create",
+        "https://food-order-eyxp.onrender.com/api/orders/create",
         {
           user: user.id,
           restaurant: id,

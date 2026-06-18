@@ -36,7 +36,7 @@ function Home() {
   const fetchRestaurants = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/restaurants"
+        "https://food-order-eyxp.onrender.com/api/restaurants"
       );
 
       setRestaurants(res.data);

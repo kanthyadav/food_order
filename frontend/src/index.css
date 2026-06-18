@@ -223,3 +223,37 @@ button:hover {
     font-size: 36px;
   }
 }
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+  }
+}
