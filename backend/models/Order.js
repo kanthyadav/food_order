@@ -1,24 +1,65 @@
 const mongoose = require("mongoose");
 
-const orderSchema = new mongoose.Schema({
+const orderSchema = new mongoose.Schema(
+{
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
   },
+
+  restaurant: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Restaurant"
+  },
+
   items: [
     {
       food: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Food"
       },
-      quantity: Number
+
+      quantity: {
+        type: Number,
+        default: 1
+      }
     }
   ],
-  totalPrice: Number,
+
+  totalPrice: {
+    type: Number,
+    required: true
+  },
+
   status: {
     type: String,
-    default: "Pending"
-  }
-}, { timestamps: true });
+    enum: [
+      "PLACED",
+      "ACCEPTED",
+      "PREPARING",
+      "OUT_FOR_DELIVERY",
+      "DELIVERED"
+    ],
+    default: "PLACED"
+  },
 
-module.exports = mongoose.model("Order", orderSchema);
+  statusMessage: {
+    type: String,
+    default: "Order Placed Successfully"
+  },
+
+  estimatedTime: {
+    type: Number,
+    default: 20
+  }
+
+},
+{
+  timestamps: true
+}
+);
+
+module.exports = mongoose.model(
+  "Order",
+  orderSchema
+);

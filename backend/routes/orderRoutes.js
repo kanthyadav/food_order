@@ -1,38 +1,47 @@
 const express = require("express");
 const router = express.Router();
-const Order = require("../models/Order");
 
-// CREATE ORDER
-router.post("/create", async (req, res) => {
-  try {
-    const { user, items, totalPrice } = req.body;
+const {
+  createOrder,
+  getUserOrders,
+  getRestaurantOrders,
+  updateOrderStatus
+} = require("../controllers/orderController");
 
-    const order = new Order({
-      user,
-      items,
-      totalPrice
-    });
+const authMiddleware =
+  require("../middleware/authMiddleware");
 
-    await order.save();
+const restaurantOwnerMiddleware =
+  require("../middleware/restaurantOwnerMiddleware");
 
-    res.status(201).json(order);
+// CUSTOMER CREATE ORDER
+router.post(
+  "/create",
+  authMiddleware,
+  createOrder
+);
 
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+// RESTAURANT OWNER VIEW ORDERS
+router.get(
+  "/restaurant/:restaurantId",
+  authMiddleware,
+  restaurantOwnerMiddleware,
+  getRestaurantOrders
+);
 
-// GET USER ORDERS
-router.get("/:userId", async (req, res) => {
-  try {
-    const orders = await Order.find({ user: req.params.userId })
-      .populate("items.food");
+// RESTAURANT OWNER UPDATE ORDER STATUS
+router.put(
+  "/status/:id",
+  authMiddleware,
+  restaurantOwnerMiddleware,
+  updateOrderStatus
+);
 
-    res.json(orders);
-
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+// CUSTOMER VIEW OWN ORDERS
+router.get(
+  "/:userId",
+  authMiddleware,
+  getUserOrders
+);
 
 module.exports = router;
