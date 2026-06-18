@@ -1,15 +1,18 @@
-# 🍔 Food Order Platform
+# 🍔 AI Food Ordering Platform
 
-A full-stack MERN Food Ordering Platform with AI-powered food recommendations using Google Gemini.
+A full-stack MERN Food Ordering Platform with AI-powered food recommendations using Google Gemini AI.
 
 ## 🚀 Live Demo
 
-* Frontend: https://food-order-8qe3.vercel.app
-* Backend: https://food-order-eyxp.onrender.com
+Frontend: https://food-order-8qe3.vercel.app
+
+Backend: https://food-order-eyxp.onrender.com
+
+---
 
 ## ✨ Features
 
-### Customer
+### 👤 Customer
 
 * User Registration & Login
 * Browse Restaurants
@@ -17,37 +20,43 @@ A full-stack MERN Food Ordering Platform with AI-powered food recommendations us
 * Add to Cart
 * Place Orders
 * Track Order Status
+* AI Food Recommendations
+* Become Restaurant Owner
 
-### Restaurant Owner
+### 🍽️ Restaurant Owner
 
 * Apply for Restaurant Ownership
-* Admin Approval Required
+* Admin Approval System
+* Restaurant Dashboard
 * Add Food Items
 * Manage Restaurant Menu
 * Receive Orders
 * Update Order Status
 
-### Admin
+### 🛡️ Admin
 
 * Dashboard Statistics
 * Approve Restaurant Owners
-* Reject Restaurant Requests
 * Generate Restaurants using AI
 * Monitor Platform Activity
+* Manage Restaurants
 
-### AI Assistant
+### 🤖 AI Features
 
 * Food Recommendations
 * Budget-based Suggestions
 * Restaurant Suggestions
-* Gemini AI Integration
+* Similar Food Suggestions when item is unavailable
+* Google Gemini AI Integration
+
+---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
 
 * React.js
-* React Router
+* React Router DOM
 * Axios
 * CSS
 
@@ -71,13 +80,52 @@ A full-stack MERN Food Ordering Platform with AI-powered food recommendations us
 * Vercel
 * Render
 
+---
+
 ## 📸 Screenshots
 
-Coming Soon
+### Login Page
+
+![Login](./screenshots/login.jpeg)
+
+### Home Page
+
+![Home](./screenshots/home.jpeg)
+
+### Orders Page
+
+![Orders](./screenshots/orders.jpeg)
+
+### AI Assistant
+
+![AI Assistant](./screenshots/aiAsist.jpeg)
+
+### Landing Page
+
+![Landing](./screenshots/landing.jpeg)
+
+---
+
+## 📂 Project Structure
+
+FOOD_ORDER
+
+├── backend
+
+├── frontend
+
+├── screenshots
+
+├── README.md
+
+└── package.json
+
+---
 
 ## 👨‍💻 Author
 
 Laxmikant Yadav
 
-* GitHub: https://github.com/kanthyadav
-* LinkedIn: https://linkedin.com/in/laxmikant-yadav-b4443825a
+GitHub: https://github.com/kanthyadav
+
+LinkedIn: https://linkedin.com/in/laxmikant-yadav-b4443825a
