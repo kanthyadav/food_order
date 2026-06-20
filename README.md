@@ -1,8 +1,8 @@
-# 🍔 AI Food Ordering Platform
+#  AI Food Ordering Platform
 
 A full-stack MERN Food Ordering Platform with AI-powered food recommendations using Google Gemini AI.
 
-## 🚀 Live Demo
+##  Live Demo
 
 Frontend: https://food-order-8qe3.vercel.app
 
@@ -10,9 +10,9 @@ Backend: https://food-order-eyxp.onrender.com
 
 ---
 
-## ✨ Features
+##  Features
 
-### 👤 Customer
+###  Customer
 
 * User Registration & Login
 * Browse Restaurants
@@ -23,7 +23,7 @@ Backend: https://food-order-eyxp.onrender.com
 * AI Food Recommendations
 * Become Restaurant Owner
 
-### 🍽️ Restaurant Owner
+###  Restaurant Owner
 
 * Apply for Restaurant Ownership
 * Admin Approval System
@@ -33,7 +33,7 @@ Backend: https://food-order-eyxp.onrender.com
 * Receive Orders
 * Update Order Status
 
-### 🛡️ Admin
+###  Admin
 
 * Dashboard Statistics
 * Approve Restaurant Owners
@@ -41,7 +41,7 @@ Backend: https://food-order-eyxp.onrender.com
 * Monitor Platform Activity
 * Manage Restaurants
 
-### 🤖 AI Features
+###  AI Features
 
 * Food Recommendations
 * Budget-based Suggestions
@@ -51,7 +51,7 @@ Backend: https://food-order-eyxp.onrender.com
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
 
@@ -82,7 +82,7 @@ Backend: https://food-order-eyxp.onrender.com
 
 ---
 
-## 📸 Screenshots
+##  Screenshots
 
 ### Login Page
 
@@ -106,7 +106,7 @@ Backend: https://food-order-eyxp.onrender.com
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 FOOD_ORDER
 
@@ -122,7 +122,7 @@ FOOD_ORDER
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
 Laxmikant Yadav
 
