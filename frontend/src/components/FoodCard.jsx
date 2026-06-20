@@ -2,24 +2,25 @@ import React from "react";
 
 function FoodCard({ food, addToCart }) {
   return (
-    <div className="card">
+    <div className="food-card">
       <img
+        className="food-image"
         src={food.image}
         alt={food.name}
       />
 
-      <div style={{ padding: "12px" }}>
-        <h3 style={{ margin: "0", fontSize: "18px" }}>
+      <div className="food-content">
+        <h3 className="food-name">
           {food.name}
         </h3>
 
-        <p style={{ margin: "5px 0", fontWeight: "bold" }}>
+        <p className="food-price">
           ₹{food.price}
         </p>
 
         <button
+          className="food-btn"
           onClick={() => addToCart(food)}
-          style={{ width: "100%" }}
         >
           Add to Cart
         </button>

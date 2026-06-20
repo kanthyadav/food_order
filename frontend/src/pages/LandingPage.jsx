@@ -5,72 +5,61 @@ function LandingPage() {
   const navigate = useNavigate();
 
   return (
-    <div
-      style={{
-        textAlign: "center",
-        padding: "50px"
-      }}
-    >
-      <h1>🍔 Food Order Platform</h1>
+    <div className="landing-page">
+      <div className="landing-content">
 
-      <h3>
-        Choose how you want to continue
-      </h3>
+        <h1 className="landing-title">
+          Food Order Platform
+        </h1>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "30px",
-          marginTop: "40px"
-        }}
-      >
-        <div
-          style={{
-            border: "1px solid #ddd",
-            padding: "30px",
-            borderRadius: "10px",
-            width: "300px"
-          }}
-        >
-          <h2>🍔 Order Food</h2>
+        <p className="landing-subtitle">
+          Order delicious food from your
+          favorite restaurants or start
+          your own restaurant business.
+        </p>
 
-          <p>
-            Browse restaurants and
-            order food online.
-          </p>
+        <div className="landing-cards">
 
-          <button
-            onClick={() =>
-              navigate("/login")
-            }
-          >
-            Continue as Customer
-          </button>
-        </div>
+          <div className="landing-card">
+            <h2> Order Food</h2>
 
-        <div
-          style={{
-            border: "1px solid #ddd",
-            padding: "30px",
-            borderRadius: "10px",
-            width: "300px"
-          }}
-        >
-          <h2>🏪 Become Owner</h2>
+            <p>
+              Browse restaurants,
+              explore menus and order
+              your favorite meals.
+            </p>
 
-          <p>
-            Register your restaurant
-            and start receiving orders.
-          </p>
+            <button
+              className="landing-btn"
+              onClick={() =>
+                navigate("/login")
+              }
+            >
+              Continue as Customer
+            </button>
+          </div>
 
-          <button
-            onClick={() =>
-              navigate("/apply-restaurant")
-            }
-          >
-            Become Restaurant Owner
-          </button>
+          <div className="landing-card">
+            <h2>Become Owner</h2>
+
+            <p>
+              Register your restaurant,
+              get approved and start
+              receiving orders.
+            </p>
+
+            <button
+              className="landing-btn"
+              onClick={() =>
+                navigate(
+                  "/apply-restaurant"
+                )
+              }
+            >
+              Become Restaurant Owner
+            </button>
+          </div>
+
         </div>
       </div>
     </div>

@@ -16,50 +16,101 @@ function Navbar() {
   };
 
   return (
-    <div className="navbar">
-      <h2>Food Order 🍔</h2>
+    <nav className="navbar">
+      <div className="navbar-logo">
+        <h2>Food Order </h2>
+      </div>
 
-      <div className="nav-links">
+      <div className="navbar-links">
 
         {!token ? (
           <>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Signup</Link>
+            <Link
+              className="nav-link"
+              to="/login"
+            >
+              Login
+            </Link>
+
+            <Link
+              className="nav-link"
+              to="/signup"
+            >
+              Signup
+            </Link>
           </>
         ) : (
           <>
-            <Link to="/home">Home</Link>
+            <Link
+              className="nav-link"
+              to="/home"
+            >
+              Home
+            </Link>
 
             {user?.role === "customer" && (
-              <Link to="/orders">
-                Orders
-              </Link>
+              <>
+                <Link
+                  className="nav-link"
+                  to="/orders"
+                >
+                  Orders
+                </Link>
+
+                <Link
+                  className="nav-link"
+                  to="/become-owner"
+                >
+                  Become Owner
+                </Link>
+              </>
             )}
 
-            <Link to="/ai-assistant">
+            <Link
+              className="nav-link"
+              to="/ai-assistant"
+            >
               AI Assistant
             </Link>
 
             {user?.role === "restaurantOwner" && (
-              <Link to="/restaurant-dashboard">
+              <Link
+                className="nav-link"
+                to="/restaurant-dashboard"
+              >
                 Dashboard
               </Link>
             )}
 
             {user?.role === "admin" && (
-              <Link to="/admin">
-                Admin
-              </Link>
+              <>
+                <Link
+                  className="nav-link"
+                  to="/admin"
+                >
+                  Admin
+                </Link>
+
+                <Link
+                  className="nav-link"
+                  to="/ai-generator"
+                >
+                  AI Generator
+                </Link>
+              </>
             )}
 
-            <button onClick={handleLogout}>
+            <button
+              className="logout-btn"
+              onClick={handleLogout}
+            >
               Logout
             </button>
           </>
         )}
 
       </div>
-    </div>
+    </nav>
   );
 }
 

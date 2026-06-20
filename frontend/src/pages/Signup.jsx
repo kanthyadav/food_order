@@ -1,67 +1,128 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import {
+  useNavigate,
+  Link,
+} from "react-router-dom";
 
 function Signup() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] =
+    useState("");
 
-  const navigate = useNavigate();
+  const [email, setEmail] =
+    useState("");
 
-  const handleSignup = async () => {
-    try {
-      await axios.post(
-        "https://food-order-eyxp.onrender.com/api/users/register",
-        {
-          name,
-          email,
-          password
-        }
-      );
+  const [password, setPassword] =
+    useState("");
 
-      alert("Signup Successful ✅");
-      navigate("/");
+  const navigate =
+    useNavigate();
 
-    } catch (error) {
-      console.log(error);
+  const handleSignup =
+    async (e) => {
+      e.preventDefault();
 
-      alert(
-        error.response?.data?.msg ||
-        "Signup Failed ❌"
-      );
-    }
-  };
+      try {
+        await axios.post(
+          "https://food-order-eyxp.onrender.com/api/users/register",
+          {
+            name,
+            email,
+            password,
+          }
+        );
+
+        alert(
+          "Signup Successful ✅"
+        );
+
+        navigate("/login");
+      } catch (error) {
+        console.log(error);
+
+        alert(
+          error.response?.data
+            ?.msg ||
+            "Signup Failed ❌"
+        );
+      }
+    };
 
   return (
-    <div className="auth-container">
+    <div className="auth-page">
       <div className="auth-card">
-        <h2>Signup 📝</h2>
+        <h2 className="auth-title">
+          Create Account 
+        </h2>
 
-        <input
-          type="text"
-          placeholder="Enter Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+        <p className="auth-subtitle">
+          Join Food Order Platform
+          and start ordering.
+        </p>
 
-        <input
-          type="email"
-          placeholder="Enter Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <form
+          className="auth-form"
+          onSubmit={
+            handleSignup
+          }
+        >
+          <input
+            className="auth-input"
+            type="text"
+            placeholder="Full Name"
+            value={name}
+            onChange={(e) =>
+              setName(
+                e.target.value
+              )
+            }
+            required
+          />
 
-        <input
-          type="password"
-          placeholder="Enter Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <input
+            className="auth-input"
+            type="email"
+            placeholder="Email Address"
+            value={email}
+            onChange={(e) =>
+              setEmail(
+                e.target.value
+              )
+            }
+            required
+          />
 
-        <button onClick={handleSignup}>
-          Signup
-        </button>
+          <input
+            className="auth-input"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) =>
+              setPassword(
+                e.target.value
+              )
+            }
+            required
+          />
+
+          <button
+            className="auth-btn"
+            type="submit"
+          >
+            Create Account
+          </button>
+        </form>
+
+        <p className="auth-footer">
+          Already have an account?
+          <Link
+            className="auth-link"
+            to="/login"
+          >
+            {" "}
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   );

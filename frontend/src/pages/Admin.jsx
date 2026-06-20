@@ -20,13 +20,12 @@ function Admin() {
         "https://food-order-eyxp.onrender.com/api/admin/dashboard",
         {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
       setStats(res.data);
-
     } catch (error) {
       console.log(error);
     }
@@ -41,13 +40,12 @@ function Admin() {
         "https://food-order-eyxp.onrender.com/api/admin/restaurant-requests",
         {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
       setRequests(res.data);
-
     } catch (error) {
       console.log(error);
     }
@@ -63,8 +61,8 @@ function Admin() {
         {},
         {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
@@ -72,7 +70,6 @@ function Admin() {
 
       fetchRequests();
       fetchDashboard();
-
     } catch (error) {
       console.log(error);
       alert("Approval Failed ❌");
@@ -89,15 +86,14 @@ function Admin() {
         {},
         {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
       alert("Rejected Successfully ❌");
 
       fetchRequests();
-
     } catch (error) {
       console.log(error);
       alert("Reject Failed");
@@ -113,146 +109,144 @@ function Admin() {
         "https://food-order-eyxp.onrender.com/api/ai/generate-restaurants",
         {
           city,
-          count: 10
+          count: 10,
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
       alert(res.data.message);
 
       fetchDashboard();
-
     } catch (error) {
       console.log(error);
 
       alert(
         error.response?.data?.error ||
-        error.response?.data?.message ||
-        "Restaurant Generation Failed"
+          error.response?.data?.message ||
+          "Restaurant Generation Failed"
       );
     }
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-
-      <h2>Admin Dashboard 👨‍💻</h2>
-
-      <div
-        style={{
-          display: "flex",
-          gap: "20px",
-          marginBottom: "30px"
-        }}
-      >
-        <h3>Users: {stats.users}</h3>
-        <h3>Restaurants: {stats.restaurants}</h3>
-        <h3>Orders: {stats.orders}</h3>
-      </div>
-
-      <hr />
-
-      <h2>AI Restaurant Generator 🤖</h2>
-
-      <input
-        type="text"
-        placeholder="Enter City"
-        value={city}
-        onChange={(e) =>
-          setCity(e.target.value)
-        }
-      />
-
-      <button
-        onClick={generateRestaurants}
-        style={{
-          marginLeft: "10px"
-        }}
-      >
-        Generate Restaurants
-      </button>
-
-      <hr />
-
-      <h2>
-        Restaurant Owner Requests
+    <div className="admin-page">
+      <h2 className="admin-title">
+        Admin Dashboard 
       </h2>
 
-      {requests.length === 0 ? (
-        <p>No Requests Found</p>
-      ) : (
-        requests.map((request) => (
-          <div
-            key={request._id}
-            style={{
-              border: "1px solid #ddd",
-              padding: "15px",
-              marginBottom: "15px",
-              borderRadius: "10px"
-            }}
+      <div className="admin-stats">
+        <div className="stat-card">
+          <h3>Users: {stats.users}</h3>
+        </div>
+
+        <div className="stat-card">
+          <h3>
+            Restaurants:
+            {stats.restaurants}
+          </h3>
+        </div>
+
+        <div className="stat-card">
+          <h3>Orders: {stats.orders}</h3>
+        </div>
+      </div>
+
+      <div className="admin-section">
+        <h2>
+          AI Restaurant Generator 
+        </h2>
+
+        <div className="generator-box">
+          <input
+            className="admin-input"
+            type="text"
+            placeholder="Enter City"
+            value={city}
+            onChange={(e) =>
+              setCity(e.target.value)
+            }
+          />
+
+          <button
+            className="generate-btn"
+            onClick={generateRestaurants}
           >
-            <h3>
-              {request.restaurantName}
-            </h3>
+            Generate Restaurants
+          </button>
+        </div>
+      </div>
 
-            <p>
-              Owner:
-              {" "}
-              {request.user?.name}
-            </p>
+      <div className="admin-section">
+        <h2>
+          Restaurant Owner Requests
+        </h2>
 
-            <p>
-              Email:
-              {" "}
-              {request.user?.email}
-            </p>
+        {requests.length === 0 ? (
+          <p>No Requests Found</p>
+        ) : (
+          requests.map((request) => (
+            <div
+              key={request._id}
+              className="request-card"
+            >
+              <h3>
+                {request.restaurantName}
+              </h3>
 
-            <p>
-              Address:
-              {" "}
-              {request.address}
-            </p>
+              <p>
+                <strong>Owner:</strong>{" "}
+                {request.user?.name}
+              </p>
 
-            <p>
-              Status:
-              {" "}
-              {request.status}
-            </p>
+              <p>
+                <strong>Email:</strong>{" "}
+                {request.user?.email}
+              </p>
 
-            {request.status ===
-              "pending" && (
-              <>
-                <button
-                  onClick={() =>
-                    approveRequest(
-                      request._id
-                    )
-                  }
-                >
-                  Approve ✅
-                </button>
+              <p>
+                <strong>Address:</strong>{" "}
+                {request.address}
+              </p>
 
-                <button
-                  onClick={() =>
-                    rejectRequest(
-                      request._id
-                    )
-                  }
-                  style={{
-                    marginLeft: "10px"
-                  }}
-                >
-                  Reject ❌
-                </button>
-              </>
-            )}
-          </div>
-        ))
-      )}
+              <p>
+                <strong>Status:</strong>{" "}
+                {request.status}
+              </p>
+
+              {request.status ===
+                "pending" && (
+                <div className="request-actions">
+                  <button
+                    className="approve-btn"
+                    onClick={() =>
+                      approveRequest(
+                        request._id
+                      )
+                    }
+                  >
+                    Approve ✅
+                  </button>
+
+                  <button
+                    className="reject-btn"
+                    onClick={() =>
+                      rejectRequest(
+                        request._id
+                      )
+                    }
+                  >
+                    Reject ❌
+                  </button>
+                </div>
+              )}
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 }

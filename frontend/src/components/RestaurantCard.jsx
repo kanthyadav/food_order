@@ -2,33 +2,24 @@ import React from "react";
 
 function RestaurantCard({ restaurant }) {
   return (
-    <div className="card">
+    <div className="restaurant-card">
       <img
+        className="restaurant-image"
         src={restaurant.image}
         alt={restaurant.name}
       />
 
-      <div style={{ padding: "12px" }}>
-        <h3 style={{ margin: "0" }}>
+      <div className="restaurant-content">
+        <h3 className="restaurant-name">
           {restaurant.name}
         </h3>
 
-        <p
-          style={{
-            color: "gray",
-            margin: "5px 0"
-          }}
-        >
-          📍 {restaurant.address}
+        <p className="restaurant-address">
+          {restaurant.address}
         </p>
 
-        <p
-          style={{
-            color: "green",
-            fontWeight: "bold"
-          }}
-        >
-          ⭐ {restaurant.rating || 4.5}
+        <p className="restaurant-rating">
+          {restaurant.rating || 4.5}
         </p>
       </div>
     </div>

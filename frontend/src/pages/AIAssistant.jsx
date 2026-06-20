@@ -4,74 +4,93 @@ import axios from "axios";
 function AIAssistant() {
   const [query, setQuery] = useState("");
   const [answer, setAnswer] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const askAI = async () => {
+    if (!query.trim()) {
+      alert("Please enter a question");
+      return;
+    }
+
     try {
-      const token = localStorage.getItem("token");
+      setLoading(true);
+
+      const token =
+        localStorage.getItem("token");
 
       const res = await axios.post(
         "https://food-order-eyxp.onrender.com/api/ai/food-assistant",
         {
-          query
+          query,
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
       setAnswer(res.data.answer);
-
     } catch (error) {
-
       console.log(error);
 
       alert(
         error.response?.data?.error ||
-        error.response?.data?.message ||
-        "AI Request Failed"
+          error.response?.data?.message ||
+          "AI Request Failed"
       );
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="ai-page">
+      <div className="ai-container">
+        <h2 className="ai-title">
+          AI Food Assistant 
+        </h2>
 
-      <h2>AI Food Assistant 🍔</h2>
+        <p className="ai-subtitle">
+          Ask for food recommendations,
+          budget meals, veg/non-veg
+          options, restaurants and more.
+        </p>
 
-      <input
-        type="text"
-        placeholder="Ask something..."
-        value={query}
-        onChange={(e) =>
-          setQuery(e.target.value)
-        }
-        style={{
-          width: "300px",
-          padding: "10px"
-        }}
-      />
+        <div className="ai-search-box">
+          <input
+            className="ai-input"
+            type="text"
+            placeholder="Example: Best food under ₹200"
+            value={query}
+            onChange={(e) =>
+              setQuery(e.target.value)
+            }
+          />
 
-      <button
-        onClick={askAI}
-        style={{
-          marginLeft: "10px"
-        }}
-      >
-        Ask AI
-      </button>
+          <button
+            className="ai-btn"
+            onClick={askAI}
+            disabled={loading}
+          >
+            {loading
+              ? "Thinking..."
+              : "Ask AI"}
+          </button>
+        </div>
 
-      <div
-        style={{
-          marginTop: "20px",
-          border: "1px solid #ddd",
-          padding: "15px"
-        }}
-      >
-        {answer}
+        <div className="ai-answer-box">
+          {answer ? (
+            <pre className="ai-answer">
+              {answer}
+            </pre>
+          ) : (
+            <p className="ai-placeholder">
+              AI responses will appear here...
+            </p>
+          )}
+        </div>
       </div>
-
     </div>
   );
 }
